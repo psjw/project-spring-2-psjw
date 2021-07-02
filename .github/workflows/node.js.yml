@@ -28,6 +28,6 @@ jobs:
       - name: Docker Hub Build And Push
         run: |
           echo "${{ secrets.DOCKER_USER_PASSWORD}}" | docker login -u "${{ secrets.DOCKER_USER_NAME }}" --password-stdin
-          docker build -t this-box-client ./web/this-box-client ./
+          docker build -t this-box-client ./web/this-box-client
           docker tag this-box-client dlrudtn108/this-box-client:${GITHUB_SHA::7}
           docker push dlrudtn108/this-box-client:${GITHUB_SHA::7}
