@@ -27,5 +27,5 @@ jobs:
       - name: Test
         run: docker build -t dlrudtn108/this-box-api-server ./
      - name: Docker Hub Push
-       run: docker push dlrudtn108/this-box-api-server
+       run: docker push dlrudtn108/this-box-api-server:tagname
 
