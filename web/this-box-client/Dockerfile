@@ -1,4 +1,4 @@
-FROM node:ubuntu-20.04 as builder
+FROM node:14.16.1 as builder
 WORKDIR /app/this-box-client
 COPY ./package.json ./
 RUN npm install
