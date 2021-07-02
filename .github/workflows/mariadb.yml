@@ -1,0 +1,22 @@
+name: MariaDB Docker Build CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker Hub Build And Push
+        run: |
+          echo "${{ secrets.DOCKER_USER_PASSWORD}}" | docker login -u "${{ secrets.DOCKER_USER_NAME }}" --password-stdin
+          docker build -t this-box-mariadb ./mariadb
+          docker tag this-box-mariadb dlrudtn108/this-boxmariadb:${GITHUB_SHA::7}
+          docker push dlrudtn108/this-box-mariadb:${GITHUB_SHA::7}
