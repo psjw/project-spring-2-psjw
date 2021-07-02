@@ -1,0 +1,8 @@
+version: "3"
+services:
+  thisbox-api-server:
+    build:
+      dockerfile: Dockerfile
+      context: ./app
+    ports:
+       - "8080:8080"
