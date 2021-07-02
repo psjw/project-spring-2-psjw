@@ -18,5 +18,5 @@ jobs:
         run: |
           echo "${{ secrets.DOCKER_USER_PASSWORD}}" | docker login -u "${{ secrets.DOCKER_USER_NAME }}" --password-stdin
           docker build -t this-box-nginx ./nginx
-          docker tag  dlrudtn108/this-box-nginx:${GITHUB_SHA::7}
+          docker tag  this-box-nginx dlrudtn108/this-box-nginx:${GITHUB_SHA::7}
           docker push dlrudtn108/this-box-nginx:${GITHUB_SHA::7}
