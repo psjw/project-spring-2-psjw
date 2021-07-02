@@ -1,6 +1,6 @@
 version: "3"
 services:
-  backend:
+  this-box-server-api:
     build:
       dockerfile: Dockerfile
       context: ./app
