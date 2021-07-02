@@ -27,6 +27,4 @@ jobs:
       - name: Docker Hub Build And Push
         run: |
           echo "${{ secrets.DOCKER_USER_PASSWORD}}" | docker login -u " ${{ secrets.DOCKER_USER_NAME }}" --password-stdin
-          docker build -t this-box-api-server ./app
-          docker tag this-box-api-server dlrudtn108/this-box-api-server:${GITHUB_SHA::7}
-          docker push dlrudtn108/this-box-api-server:${GITHUB_SHA::7}
+
