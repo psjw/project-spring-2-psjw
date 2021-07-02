@@ -27,5 +27,5 @@ jobs:
       - name: Docker Build This Box Server API
         run: docker compose up --build
      - name: Docker Hub Push
-       run : docker push dlrudtn108/this-box-api-server
+       run: docker push dlrudtn108/this-box-api-server
 
