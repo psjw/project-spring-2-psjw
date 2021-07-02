@@ -2,7 +2,7 @@ FROM node:14.16.1 as builder
 WORKDIR /app/this-box-client
 COPY package.json ./
 RUN npm install
-COPY this-box-client .
+COPY . .
 RUN npm run build
 
 FROM nginx
