@@ -26,5 +26,5 @@ jobs:
         run: ./gradlew test
       - name: Docker Hub Build And Push
         run: |
-          echo "${{ secrets.DOCKER_USER_PASSWORD}}" | docker login -u " ${{ secrets.DOCKER_USER_NAME }}" --password-stdin
+          echo "${{ secrets.DOCKER_USER_PASSWORD}}" | docker login -u "${{ secrets.DOCKER_USER_NAME }}" --password-stdin
 
