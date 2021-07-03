@@ -1,0 +1,33 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "this-box-client",
+      "image": "dlrudtn108/this-box-client",
+      "hostname": "this-box-client",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "this-box-server-api",
+      "image": "dlrudtn108/this-box-server-api",
+      "hostname": "this-box-server-api",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "this-box-nginx",
+      "image": "dlrudtn108/this-box-nginx",
+      "hostname": "this-box-nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["this-box-client", "this-box-server-api"],
+      "memory": 128
+    }
+  ]
+}
