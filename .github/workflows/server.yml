@@ -37,8 +37,8 @@ jobs:
       - name: Beanstalk Deploy for JAR
         uses: DylanBDev/beanstalk-deploy@initial
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: THIS-BOX
           environment_name: Thisbox-env
           version_label: ${GITHUB_SHA::7}
