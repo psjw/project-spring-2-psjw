@@ -34,18 +34,11 @@ jobs:
           docker build -t this-box-api-server ./app
           docker tag this-box-api-server dlrudtn108/this-box-api-server:${GITHUB_SHA::7}
           docker push dlrudtn108/this-box-api-server:${GITHUB_SHA::7}
-      - name: Checkout source code
-        uses: actions/checkout@v1
-      - name: Elastic Beanstalk Deployment
-        uses: kumarshivam12/Aws-ElasticBeanstalk@v1.3
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-          EB-BUCKET-NAME:
-            description : elasticbeanstalk-us-east-2-973447087510
-          APPLICATION-NAME:
-            description : THIS-BOX
-          EB-ENV-NAME:
-            description : Thisbox-env.eba-muvfhpbw.us-east-2.elasticbeanstalk.com
-          AWS-REGION:
-            description : us-east-2
+      uses: hmanzur/actions-aws-eb@v1.0.0
+      with:
+        command: 'deploy ${{ secrets.ENVIRONMENT_NAME }}'
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: "us-east-2"
+        
