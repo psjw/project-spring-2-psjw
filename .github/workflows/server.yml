@@ -43,7 +43,7 @@ jobs:
           envs: GITHUB_SHA
           script: |
             docker pull dlrudtn108/this-box-api-server:${GITHUB_SHA::7}
-            docker tag this-box-api-server:${GITHUB_SHA::7} dlrudtn108/this-box-api-server
+            docker tag this-box-api-server:${GITHUB_SHA::7} this-box-api-server
             docker stop server
             docker run -d --rm --name server -p 80:8080 this-box-api-server
 
