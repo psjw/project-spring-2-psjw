@@ -34,13 +34,16 @@ jobs:
           docker build -t this-box-api-server ./app
           docker tag this-box-api-server dlrudtn108/this-box-api-server:${GITHUB_SHA::7}
           docker push dlrudtn108/this-box-api-server:${GITHUB_SHA::7}
-      - name: Beanstalk Deploy for JAR
-        uses: DylanBDev/beanstalk-deploy@initial
+      - name: Deploy
+        uses: appleboy/ssh-action@master
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: THIS-BOX
-          environment_name: Thisbox-env
-          version_label: ${GITHUB_SHA::7}
-          region: us-east-2
-          deployment_package: deploy.jar
+          host: ${{ secrets.AWS_EC2_HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.AWS_EC2_PRIVATE_KEY }}
+          envs: GITHUB_SHA
+          script: |
+            docker pull dlrudtn108/this-box-api-server:${GITHUB_SHA::7}
+            docker tag this-box-api-server:${GITHUB_SHA::7} this-box-api-server
+            docker stop server
+            docker run -d --rm --name server -p 80:8080 this-box-api-server
+
