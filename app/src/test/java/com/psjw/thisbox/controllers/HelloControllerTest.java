@@ -9,6 +9,6 @@ class HelloControllerTest {
 
     @Test
     public void hello(){
-        assertEquals("hello modify",controller.hello());
+        assertEquals("hello",controller.hello());
     }
 }
