@@ -42,5 +42,8 @@ jobs:
           key: ${{ secrets.AWS_EC2_PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
-            ls -al
+            docker pull dlrudtn108/this-box-api-server:${GITHUB_SHA::7}
+            docker tag this-box-api-server:${GITHUB_SHA::7} this-box-api-server
+            docker stop server
+            docker run -d --rm --name server -p 80:8080 this-box-api-server
 
