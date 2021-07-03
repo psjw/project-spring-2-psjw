@@ -41,6 +41,6 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: THIS-BOX
           environment_name: Thisbox-env
-          version_label: ${GITHUB_SHA::7}
+          version_label: :${GITHUB_SHA::7}
           region: us-east-2
-          deployment_package: deploy.jar
+          deployment_package: app.jar
